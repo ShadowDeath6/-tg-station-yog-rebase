@@ -93,6 +93,7 @@
 			loot = list(/obj/item/weapon/staff/storm)
 		else if(prob(5))
 			loot = list(/obj/structure/closet/crate/necropolis/tendril)
+		loot += /obj/item/weapon/soul/legion
 		..()
 
 /mob/living/simple_animal/hostile/megafauna/legion/Process_Spacemove(movement_dir = 0)

@@ -25,7 +25,7 @@
 	del_on_death = 1
 	aggro_vision_range = 18
 	idle_vision_range = 5
-	loot = list(/obj/structure/closet/crate/necropolis/bubblegum)
+	loot = list(/obj/structure/closet/crate/necropolis/bubblegum, /obj/item/weapon/soul/bubblegum)
 	var/charging = 0
 	deathmessage = "sinks into a pool of blood, fleeing the battle. You've won, for now... "
 	death_sound = 'sound/magic/enter_blood.ogg'
