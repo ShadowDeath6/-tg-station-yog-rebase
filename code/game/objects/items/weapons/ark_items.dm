@@ -8,6 +8,7 @@
 	status = ORGAN_ORGANIC
 
 
+
 /obj/item/weapon/reality_prime
 	name = "Reality Prime"
 	desc = "This glowing orb is brimming with strange words and data."
