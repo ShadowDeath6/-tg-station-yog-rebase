@@ -24,7 +24,7 @@
 	pixel_x = -16
 	aggro_vision_range = 18
 	idle_vision_range = 5
-	loot = list(/obj/structure/closet/crate/necropolis/dragon)
+	loot = list(/obj/structure/closet/crate/necropolis/dragon, /obj/item/weapon/soul/ashdrake)
 	butcher_results = list(/obj/item/weapon/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/animalhide/ashdrake = 10, /obj/item/stack/sheet/bone = 30)
 	var/anger_modifier = 0
 	var/obj/item/device/gps/internal
@@ -158,6 +158,8 @@
 			swoop_attack()
 			swoop_attack()
 			swoop_attack()
+	else if(prob(5))
+		xoxo_and_friends()
 	else
 		fire_walls()
 
@@ -240,6 +242,24 @@
 	stop_automated_movement = FALSE
 	swooping = 0
 	density = 1
+	
+/mob/living/simple_animal/hostile/megafauna/dragon/proc/xoxo_and_friends()
+	visible_message("<span class='danger'>[src] shoots fire into the sky!</span>")
+	var/xoxofiring = pick(1, 2)
+	for(var/turf/turf in range(round(12*scaling,1),get_turf(src)))
+		if(IsOdd(xoxofiring))
+			new /obj/effect/overlay/temp/target(turf)
+			xoxofiring++
+		else
+			xoxofiring++
+		friends()
+			
+/mob/living/simple_animal/hostile/megafauna/dragon/proc/friends()
+	spawn(25)
+	visible_message("<span class='danger'>[src] roars and calls for aid!</span>")	
+	var/mob/living/simple_animal/hostile/megafauna/dragon/lesser/L = new(src.loc)
+	L.faction = list("mining")
+
 
 /mob/living/simple_animal/hostile/megafauna/dragon/AltClickOn(atom/movable/A)
 	if(!istype(A))
@@ -261,3 +281,6 @@
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	butcher_results = list(/obj/item/weapon/ore/diamond = 1, /obj/item/stack/sheet/sinew = 1, /obj/item/stack/sheet/animalhide/ashdrake = 2, /obj/item/stack/sheet/bone = 6)
 	loot = list()
+
+/mob/living/simple_animal/hostile/megafauna/dragon/lesser/proc/friends()
+	return

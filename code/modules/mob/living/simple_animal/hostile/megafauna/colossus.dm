@@ -25,7 +25,7 @@
 	aggro_vision_range = 18
 	idle_vision_range = 5
 	del_on_death = 1
-	loot = list(/obj/machinery/smartfridge/black_box)
+	loot = list(/obj/machinery/smartfridge/black_box, /obj/item/weapon/soul/colossus)
 	butcher_results = list(/obj/item/weapon/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/animalhide/ashdrake = 10, /obj/item/stack/sheet/bone = 30)
 
 	deathmessage = "disintegrates, leaving a glowing core in its wake."
@@ -205,7 +205,6 @@
 	P.yo = marker.y - startloc.y
 	P.xo = marker.x - startloc.x
 	P.damage = round(P.damage * src.scaling, 1)
-	P.speed = P.speed / src.scaling
 	if(target)
 		P.original = target
 	else
